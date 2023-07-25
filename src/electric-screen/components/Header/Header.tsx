@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import NavDivider from './svg/NavDivider';
 import { useState } from 'react';
 import HeaderWidget from './HeaderWidget';
+import React from 'react';
 
 type Props = {};
 
@@ -31,7 +32,7 @@ export default function Header({}: Props) {
         {navList.map((name, index) => {
           const isFirst = index === 0;
           return (
-            <>
+            <React.Fragment key={name}>
               {isFirst && (
                 <NavDivider fill={currentNav === 0 ? '#8CF1EB' : '#E6E6E6'} />
               )}
@@ -48,13 +49,12 @@ export default function Header({}: Props) {
                     : '#E6E6E6'
                 }
               />
-            </>
+            </React.Fragment>
           );
         })}
       </Nav>
 
       <HeaderWidget />
-
     </Wrapper>
   );
 }
