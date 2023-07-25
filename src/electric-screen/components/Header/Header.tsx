@@ -60,6 +60,7 @@ export default function Header({}: Props) {
 }
 
 const Wrapper = styled.div`
+  z-index: 2;
   width: 4656px;
   height: 166px;
   display: flex;
