@@ -9,6 +9,11 @@
 }
 
 @font-face {
-  font-family: SOURCEHANSANSCN;
+  font-family: Source Han Sans CN;
   src: url('./SOURCEHANSANSCN-REGULAR.OTF');
+}
+
+@font-face {
+  font-family: PangMenZhengDao;
+  src: url('./PangMenZhengDaoBiaoTiTi-1.ttf');
 }

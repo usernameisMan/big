@@ -60,12 +60,11 @@ export default function Header({}: Props) {
 }
 
 const Wrapper = styled.div`
-  position: relative;
-  top: 64px;
-  left: 72px;
   width: 4656px;
   height: 166px;
   display: flex;
+  margin-top: 64px;
+  margin-left: 72px;
 `;
 
 const Title = styled.div`
