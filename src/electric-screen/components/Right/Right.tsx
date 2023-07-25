@@ -210,6 +210,9 @@ const Wrapper = styled.div`
       
     }
     .progress {
+      :where(.css-dev-only-do-not-override-txh9fw).ant-progress .ant-progress-circle-trail {
+        stroke: #d9d9d945;
+    }
       .ant-progress-text {
         font-family: Source Han Sans CN;
         font-size: 40px;
