@@ -102,6 +102,8 @@ const Nav = styled.div`
   line-height: 65px;
   letter-spacing: 2px;
   text-align: left;
+  display: flex;
+  align-items: center;
 `;
 
 const NavText = styled.span<any>`

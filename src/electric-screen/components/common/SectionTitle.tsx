@@ -3,11 +3,12 @@ import styled from 'styled-components';
 
 type Props = {
   children: React.ReactNode;
+  className: string;
 };
 
-export default function SectionTitle({ children }: Props) {
+export default function SectionTitle({ children, className }: Props) {
   return (
-    <Wrapper>
+    <Wrapper className={className}>
       <div />
       <span>{children}</span>
     </Wrapper>
@@ -33,6 +34,6 @@ const Wrapper = styled.div`
     line-height: 60px;
     letter-spacing: 0.08em;
     text-align: left;
-    color: #8CF1EB;
+    color: #8cf1eb;
   }
 `;
