@@ -75,6 +75,10 @@ export default function WorkOrderData({}: Props) {
             <div className='warrantyChart'>
               <Ellipse />
               <span>56</span>
+              <div className="wave">
+                <div className="wave1"></div>
+                <div className="wave2"></div>
+              </div>
             </div>
             <div className='warrantyText'>累计报修工单</div>
           </div>
