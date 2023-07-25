@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import WorkOrderData from './WorkOrderData/WorkOrderData';
+import CheckAmount from './CheckAmount/CheckAmount';
 
 type Props = {};
 
@@ -7,6 +8,7 @@ export default function Left({}: Props) {
   return (
     <Wrapper>
       <WorkOrderData />
+      <CheckAmount />
     </Wrapper>
   );
 }
