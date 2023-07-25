@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 type Props = {
   children: React.ReactNode;
-  className: string;
+  className?: string;
 };
 
 export default function SectionTitle({ children, className }: Props) {
