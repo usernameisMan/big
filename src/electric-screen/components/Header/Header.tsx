@@ -64,8 +64,7 @@ const Wrapper = styled.div`
   width: 4656px;
   height: 166px;
   display: flex;
-  margin-top: 64px;
-  margin-left: 72px;
+  margin-bottom: 38px;
 `;
 
 const Title = styled.div`

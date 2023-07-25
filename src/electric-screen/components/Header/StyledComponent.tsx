@@ -1,14 +1,5 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
-  font-family: Source Han Sans CN;
-  font-weight: 400;
-  margin-left: 304px;
-  display: flex;
-  align-items: center;
-  color: #fff;
-`;
-
 export const Time = styled.div`
   font-weight: 400;
   color: #ffffff;

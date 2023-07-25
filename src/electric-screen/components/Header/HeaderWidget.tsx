@@ -1,15 +1,9 @@
 import dayjs from 'dayjs';
+import styled from 'styled-components';
 import { useEffect, useRef, useState } from 'react';
 import { getLunarDate } from './header.helper';
 import Cloudy from './svg/Cloudy';
-import {
-  Buttons,
-  Divider,
-  PM,
-  Time,
-  Weather,
-  Wrapper,
-} from './StyledComponent';
+import { Buttons, Divider, PM, Time, Weather } from './StyledComponent';
 import Menu from './svg/Menu';
 import Setting from './svg/Setting';
 import Return from './svg/Return';
@@ -70,3 +64,12 @@ export default function HeaderWidget({}: Props) {
     </Wrapper>
   );
 }
+
+export const Wrapper = styled.div`
+  font-family: Source Han Sans CN;
+  font-weight: 400;
+  margin-left: 304px;
+  display: flex;
+  align-items: center;
+  color: #fff;
+`;
