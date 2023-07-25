@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import WorkOrderData from './WorkOrderData/WorkOrderData';
 import CheckAmount from './CheckAmount/CheckAmount';
 import CheckSituation from './CheckSituation/CheckSituation';
+import MajorReceptionGuarantee from './MajorReceptionGuarantee/MajorReceptionGuarantee';
 
 type Props = {};
 
@@ -11,6 +12,7 @@ export default function Left({}: Props) {
       <WorkOrderData />
       <CheckAmount />
       <CheckSituation />
+      <MajorReceptionGuarantee />
     </Wrapper>
   );
 }
