@@ -39,6 +39,60 @@ export const Wrapper = styled.div`
       left: 0;
       top: 0;
     }
+    .wave {
+      position: absolute;
+      top: 0px;
+      right: 0;
+      margin: auto;
+      left: 0;
+      bottom: 0;
+      width: 70%;
+      height: 70%;
+      border-radius: 50%;
+      overflow: hidden;
+      font-size: 0;
+      cursor: pointer;
+      flex-shrink: 0;
+      animation: water-wave linear infinite;
+    }
+    .wave1 {
+      display: block;
+      position: absolute;
+      top: 65%;
+      left: -30%;
+      background: #3aa0ff;
+      opacity: 0.7;
+      width: 200%;
+      height: 200%;
+      border-radius: 40%;
+      animation: inherit;
+      animation-duration: 5s;    
+      background: linear-gradient(0deg, #8CF1EB, #8CF1EB),
+      linear-gradient(180deg, #8CF1EB -39.58%, rgba(140, 241, 235, 0) 99.99%);     
+    }
+    .wave2 {
+      display: block;
+      position: absolute;
+      top: 65%;
+      left: -40%;
+      background: linear-gradient(0deg, #E6E6E6, #ffffff),
+      linear-gradient(180deg, #E6E6E6 -79.01%, rgba(255, 255, 255, 0) 100%);    
+      opacity: 0.7;
+      width: 200%;
+      height: 200%;
+      border-radius: 35%;
+      animation: inherit;
+      animation-duration: 7s;
+    }
+
+    @keyframes water-wave {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
   }
 
   .warrantyText {
