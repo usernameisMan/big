@@ -59,6 +59,7 @@ const Root = styled.div`
 
 const Content = styled.div`
   display: flex;
+  justify-content: space-between;
   height: 2360px;
   margin-top: 20px;
   z-index: 2;
