@@ -174,7 +174,7 @@ const Wrapper = styled.div`
       display: inline-flex;
       width: 696px;
       justify-content: space-between;
-      
+      align-items: center;
       .name {
         white-space: nowrap;
         width: 122px;
@@ -188,6 +188,9 @@ const Wrapper = styled.div`
     }
   }
 
+  .bodyLeft:active {
+    background-color: #455059;
+  }
   .tableHeader {
     z-index: 2;
     position: relative;
