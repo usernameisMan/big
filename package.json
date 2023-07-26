@@ -14,6 +14,7 @@
     "@types/react-router-dom": "^5.3.3",
     "@types/styled-components": "^5.1.26",
     "antd": "^5.7.3",
+    "axios": "^1.4.0",
     "classnames": "^2.3.2",
     "dayjs": "^1.11.9",
     "echarts": "^5.4.3",
@@ -54,5 +55,21 @@
   },
   "devDependencies": {
     "tailwindcss": "^3.3.3"
+  },
+  "proxy": {
+    "/api/open": {
+      "target": "http://zr.tocersoft.net:7888/api/open",
+      "changeOrigin": true,
+      "pathRewrite": {
+        "^/api/open": ""
+      },
+      "/api/weather": {
+        "target": "http://172.16.1.14:9045/api/weather",
+        "changeOrigin": true,
+        "pathRewrite": {
+          "^/api/weather": ""
+        }
+      }
+    }
   }
 }
