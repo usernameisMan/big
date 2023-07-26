@@ -6,7 +6,7 @@ import d13 from "./svgs/d13.svg"
 import d21 from "./svgs/d21.svg"
 import d22 from "./svgs/d22.svg"
 import d23 from "./svgs/d23.svg"
-import f10 from "./svgs/fu10.svg"
+import f10 from "./svgs/fu10.png"
 import solid_smallnote from "./svgs/fa-solid_smallnote.svg"
 import solid_tools from "./svgs/fa-solid_tools.svg"
 import { Progress, Space } from 'antd';
@@ -19,7 +19,7 @@ import zen40 from '../../images/zen40.png';
 type Props = {};
 
 export default function Right({ }: Props) {
-  const [temperature, setTemperature] = useState(30)
+  const [temperature, setTemperature] = useState(-10)
 
   const [deviceDatas, setDeviceData] = useState([
     {
@@ -221,6 +221,7 @@ text-align: left;
   .things {
     margin-top:40px;
     .progressBox {
+      width:144px;
       position: relative;
       display: inline-block;
       vertical-align: text-top;
@@ -259,7 +260,6 @@ text-align: left;
         line-height: 36px;
         letter-spacing: 0em;
         text-align: left;
-
       }
     }
   }
