@@ -13,11 +13,13 @@ import { Progress, Space } from 'antd';
 import { useState } from 'react';
 import Today from './Today/Today';
 import Fire from './Fire/Fire';
-
+import zen30 from '../../images/zen30.png';
+import zen from '../../images/zn.png';
+import zen40 from '../../images/zen40.png';
 type Props = {};
 
 export default function Right({ }: Props) {
-  const [temperature, setTemperature] = useState(-10)
+  const [temperature, setTemperature] = useState(30)
 
   const [deviceDatas, setDeviceData] = useState([
     {
@@ -101,9 +103,10 @@ export default function Right({ }: Props) {
     <div className='things'>
       <div className='progressBox'>
         {temperature <= 0 && <img src={f10} alt="" />}
-        {temperature >= 1 && <img src={f10} alt="" />}
-        {temperature >= 30 && <img src={f10} alt="" />}
-        {temperature >= 40 && <img src={f10} alt="" />}
+        {temperature >= 1 && temperature <30 && <img src={zen} alt="" />}
+        {temperature >= 30 && temperature <40 && <img src={zen30} alt="" />}
+        {temperature >= 40 && <img src={zen40} alt="" />}
+        <span className='tem'>{temperature}<span>%</span></span>
         <span className='text'>温度报警</span>
       </div>
       <div className='progressBox' style={{ margin: '0 284px 0 284px' }}>
@@ -136,7 +139,34 @@ const Wrapper = styled.div`
   width: 1000px;
   height: 2360px;
   margin-right:72px;
+  .tem {
+    font-family: Source Han Sans CN;
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 60px;
+    letter-spacing: 0em;
+    text-align: right;
+    color:#FFFFFF;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: auto;
+    right: 0;
+    height: 60px;
+    width: fit-content;
+    bottom: 0;
 
+    span {
+      //styleName: 正文;
+font-family: Source Han Sans CN;
+font-size: 24px;
+font-weight: 500;
+line-height: 36px;
+letter-spacing: 0em;
+text-align: left;
+
+    }
+  }
   .deviceData {
     margin-top:40px;
     margin-bottom: 40px;
