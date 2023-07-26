@@ -208,7 +208,7 @@ const Wrapper = styled.div`
       line-height: 36px;
       letter-spacing: 0em;
       text-align: center;
-      
+
     }
     .progress {
       :where(.css-dev-only-do-not-override-txh9fw).ant-progress .ant-progress-circle-trail {
@@ -229,7 +229,7 @@ const Wrapper = styled.div`
         line-height: 36px;
         letter-spacing: 0em;
         text-align: left;
-        
+
       }
     }
   }
