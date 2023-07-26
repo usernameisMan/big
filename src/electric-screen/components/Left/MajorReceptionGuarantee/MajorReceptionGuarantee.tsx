@@ -1,9 +1,12 @@
+import { useEffect, useRef } from 'react';
 import SectionTitle from '../../common/SectionTitle';
 import cn from 'classnames';
 
 type Props = {};
 
 export default function MajorReceptionGuarantee({}: Props) {
+  const listEle = useRef<HTMLUListElement>(null);
+
   const titleList = [
     {
       name: '通知时间',
@@ -70,61 +73,121 @@ export default function MajorReceptionGuarantee({}: Props) {
     },
   ];
 
-  const contentList = new Array(20).fill({
+  const contentList = new Array(20).fill(null).map((item, index) => ({
     time: '2023/07/21  12:03:08',
-    department: '部门名称',
-    content: '通知内容通知内容通知内容通知内容',
-  });
+    department: `部门名称${index}`,
+    content: '通知内容通知内容通知内容',
+  }));
+
+  useEffect(() => {
+    if (listEle.current) {
+      const liHeight = listEle.current.querySelector('li')?.offsetHeight ?? 0;
+      const ulHeight = liHeight * contentList.length;
+      listEle.current.animate(
+        [
+          // keyframes
+          { transform: 'translateY(0px)' },
+          { transform: `translateY(-${ulHeight}px)` },
+        ],
+        {
+          // timing options
+          duration: 10000,
+          iterations: Infinity,
+        },
+      );
+
+      listEle.current.getAnimations({ subtree: true }).map((animation) => {
+        console.log(`📄 ~ elem.getAnimations ~ animation:`, animation);
+
+        return animation.finished;
+      });
+    }
+  }, []);
+
+  const pauseAnimation = () => {
+    if (listEle.current) {
+      listEle.current.getAnimations({ subtree: true }).map((animation) => {
+        console.log(`📄 ~ elem.getAnimations ~ animation:`, animation);
+        animation.pause();
+      });
+    }
+  };
+
+  const playAnimation = () => {
+    if (listEle.current) {
+      listEle.current.getAnimations({ subtree: true }).map((animation) => {
+        console.log(`📄 ~ elem.getAnimations ~ animation:`, animation);
+        animation.play();
+      });
+    }
+  };
 
   return (
     <section className='mt-10'>
       <SectionTitle className='mb-10'>重大接待保障</SectionTitle>
       {/* table */}
-      <div className='w-[1000px] h-[652px] pt-8 px-12 bg-[rgba(10,32,41,0.6)]'>
+      <div className='w-[1000px] h-[652px] pt-8 bg-[rgba(10,32,41,0.6)]'>
         {/* table title */}
-        <div className='flex mb-6'>
-          {titleList.map((item, index) => {
-            return (
-              <div
-                className={cn('flex items-center', {
-                  'w-[236px] mr-4': index === 0,
-                  'w-[318px] mr-4 justify-center': index === 1,
-                  'w-[318px] justify-center': index === 2,
-                })}
-                key={item.name}
-              >
-                <span className='mr-2'>{item.icon}</span>
-                <span className='text-[rgba(140,241,235,1)] text-[24px] leading-[36px]'>
-                  {item.name}
-                </span>
-              </div>
-            );
-          })}
+        <div className="px-12 mb-6">
+          <div className='flex mb-6'>
+            {titleList.map((item, index) => {
+              return (
+                <div
+                  className={cn('flex items-center', {
+                    'w-[236px] mr-4': index === 0,
+                    'w-[318px] mr-4 justify-center': index === 1,
+                    'w-[318px] justify-center': index === 2,
+                  })}
+                  key={item.name}
+                >
+                  <span className='mr-2'>{item.icon}</span>
+                  <span className='text-[rgba(140,241,235,1)] text-[24px] leading-[36px]'>
+                    {item.name}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+          <div className='w-full h-[2px] bg-[rgba(230,230,230,0.4)]' />
         </div>
 
-        <div className='w-full h-[2px] bg-[rgba(230,230,230,0.4)] mb-6' />
-
         {/* table body */}
-        <ul className='overflow-hidden'>
-          {contentList.map((item, index) => {
-            const isOdd = index % 2 === 0
+        <div
+          className='my-10 bg-n-300 h-[504px] mx-auto overflow-hidden'
+          onMouseEnter={() => pauseAnimation()}
+          onMouseLeave={() => playAnimation()}
+        >
+          <ul ref={listEle}>
+            {/* 复制了一份 list 用于轮播   */}
+            {contentList.concat(contentList).map((item, index) => {
+              const isOdd = index % 2 === 0;
 
-            return (
-              <li
-                className='flex text-center font-medium text-[rgba(230,230,230,1)] items-center h-[84px]'
-                key={index}
-              >
-                <div className={cn('w-[236px] text-[24px] leading-[36px] mr-6')}>
-                  {item.time}
-                </div>
-                <div className='w-[310px] font-bold text-[28px] leading-[42px] mr-6'>
-                  {item.department}
-                </div>
-                <div className='w-[310px]'>{item.content}</div>
-              </li>
-            );
-          })}
-        </ul>
+              return (
+                <li
+                  className={cn(
+                    'flex text-center font-medium text-[rgba(230,230,230,1)] items-center h-[84px] px-12',
+                    {
+                      'bg-[#0f2b3b]': isOdd,
+                    },
+                  )}
+                  key={index}
+                >
+                  <div
+                    className={cn('w-[236px] text-[24px] leading-[36px] mr-6')}
+                  >
+                    {item.time}
+                  </div>
+                  <div className='w-[310px] font-bold text-[28px] leading-[42px] mr-6'>
+                    {item.department}
+                  </div>
+                  <div className='w-[310px] text-[24px] leading-[36px]'>
+                    {item.content}
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       </div>
     </section>
   );

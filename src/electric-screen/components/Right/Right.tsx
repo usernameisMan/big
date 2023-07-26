@@ -12,6 +12,7 @@ import solid_tools from "./svgs/fa-solid_tools.svg"
 import { Progress, Space } from 'antd';
 import { useState } from 'react';
 import Today from './Today/Today';
+import Fire from './Fire/Fire';
 
 type Props = {};
 
@@ -127,7 +128,7 @@ export default function Right({ }: Props) {
       </div>
     </div>
     <SectionTitle>消防数据</SectionTitle>
-    <div className='fire'></div>
+    <Fire/>
   </Wrapper>
 }
 
@@ -207,7 +208,7 @@ const Wrapper = styled.div`
       line-height: 36px;
       letter-spacing: 0em;
       text-align: center;
-      
+
     }
     .progress {
       :where(.css-dev-only-do-not-override-txh9fw).ant-progress .ant-progress-circle-trail {
@@ -228,7 +229,7 @@ const Wrapper = styled.div`
         line-height: 36px;
         letter-spacing: 0em;
         text-align: left;
-        
+
       }
     }
   }
