@@ -418,7 +418,7 @@ export default function IoTDevice({}: Props) {
               {iotData.map((item, index) => {
                 return (
                   <li
-                    className="flex justify-between items-center text-[24px] leading-[36px]"
+                    className="flex justify-between items-center text-[24px] leading-[36px] active:bg-gray-700 focus:bg-gray-700"
                     key={index}
                     onClick={() => handleIotPosition(index, item.posInfo)}
                   >
