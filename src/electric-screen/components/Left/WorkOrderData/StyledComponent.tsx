@@ -66,9 +66,9 @@ export const Wrapper = styled.div`
       height: 200%;
       border-radius: 40%;
       animation: inherit;
-      animation-duration: 5s;    
+      animation-duration: 5s;
       background: linear-gradient(0deg, #8CF1EB, #8CF1EB),
-      linear-gradient(180deg, #8CF1EB -39.58%, rgba(140, 241, 235, 0) 99.99%);     
+      linear-gradient(180deg, #8CF1EB -39.58%, rgba(140, 241, 235, 0) 99.99%);
     }
     .wave2 {
       display: block;
@@ -76,7 +76,7 @@ export const Wrapper = styled.div`
       top: 65%;
       left: -40%;
       background: linear-gradient(0deg, #E6E6E6, #ffffff),
-      linear-gradient(180deg, #E6E6E6 -79.01%, rgba(255, 255, 255, 0) 100%);    
+      linear-gradient(180deg, #E6E6E6 -79.01%, rgba(255, 255, 255, 0) 100%);
       opacity: 0.7;
       width: 200%;
       height: 200%;
@@ -162,6 +162,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Tag = styled.div`
+  cursor: pointer;
   width: 200px;
   height: 64px;
   padding: 11px 44px;

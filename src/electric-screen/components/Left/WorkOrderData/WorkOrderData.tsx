@@ -7,11 +7,25 @@ import deliveryOrderSrc from './images/delivery-order.png';
 import handleOrderSrc from './images/handle-order.png';
 import checkOrderSrc from './images/check-order.png';
 import confirmOrderSrc from './images/confirm-order.png';
-import finishedOrderSrc from './images/finished-order.png'
+import finishedOrderSrc from './images/finished-order.png';
+import { useState } from 'react';
+import cn from 'classnames';
 
 type Props = {};
 
 export default function WorkOrderData({}: Props) {
+  const [currentTag, setCurrentTag] = useState('all');
+  const tags = [
+    {
+      key: 'all',
+      name: '整体情况',
+    },
+    {
+      key: 'three',
+      name: '最近三天',
+    },
+  ];
+
   const pendingOrderList = [
     {
       imageSrc: deliveryOrderSrc,
@@ -63,8 +77,17 @@ export default function WorkOrderData({}: Props) {
       <div className='top'>
         <SectionTitle>工单数据</SectionTitle>
         <div className='tags'>
-          <Tag className='current'>整体情况</Tag>
-          <Tag>最近三天</Tag>
+          {tags.map((item) => {
+            return (
+              <Tag
+                key={item.key}
+                onClick={() => setCurrentTag(item.key)}
+                className={cn({ current: item.key === currentTag })}
+              >
+                {item.name}
+              </Tag>
+            );
+          })}
         </div>
       </div>
 
@@ -75,9 +98,9 @@ export default function WorkOrderData({}: Props) {
             <div className='warrantyChart'>
               <Ellipse />
               <span>56</span>
-              <div className="wave">
-                <div className="wave1"></div>
-                <div className="wave2"></div>
+              <div className='wave'>
+                <div className='wave1'></div>
+                <div className='wave2'></div>
               </div>
             </div>
             <div className='warrantyText'>累计报修工单</div>
