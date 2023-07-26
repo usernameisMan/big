@@ -24,6 +24,7 @@ import { useEffect, useState } from "react";
 import { pruductPos } from "../../../../mock/activeData";
 import { listInternetData } from "../../../../utils/request";
 import { gcj02towgs84 } from "../../../../utils/transformUtil";
+import { hiddenBuilding, setBuildingPos } from "../../../../mock/pos";
 
 type Props = {};
 
@@ -104,6 +105,43 @@ export default function IoTDevice({}: Props) {
       abnormalValue: 0,
     },
   ];
+
+  const handleIotPosition = (index: number, posIndexArray: string[]) => {
+    // TODO: 修改当前激活的按钮样式
+
+    let state: string;
+
+    if (activeIotIndex === index) {
+      // 隐藏其它类型
+      state = "0";
+    } else {
+      // 显示所有类型
+      state = "1";
+    }
+
+    if (state === "1") {
+      // @ts-ignore
+      window.ue &&
+        // @ts-ignore
+        window.ue.interface.broadcast("PSAPI", JSON.stringify(showAllPos));
+    } else {
+      const posInfo = JSON.parse(JSON.stringify(posStateData));
+      posInfo.forEach((posItem: any) => {
+        // 将posIndexArray中的点位state设置为1
+        if (posIndexArray.includes(posItem.id)) {
+          posItem.state = "1";
+        } else {
+          posItem.state = "0";
+        }
+      });
+
+      changePosState.functionParameters[0].value = posInfo;
+      // @ts-ignore
+      window.ue &&
+        // @ts-ignore
+        window.ue.interface.broadcast("PSAPI", JSON.stringify(changePosState));
+    }
+  };
 
   /**
    * @description: 处理点位数据
@@ -191,6 +229,7 @@ export default function IoTDevice({}: Props) {
    * @return {*}
    */
   const processPosState = () => {
+    iotData = [];
     let manholeCoverIndexArray: string[] = [];
     let trashCanIndexArray: string[] = [];
     let waterLevelIndexArray: string[] = [];
@@ -292,9 +331,10 @@ export default function IoTDevice({}: Props) {
   };
 
   useEffect(() => {
-
     // @ts-ignore 设置分辨率
-    window.ue &&  window.ue.interface.broadcast("PSAPI", JSON.stringify(changeResolution));
+    window.ue &&
+      // @ts-ignore
+      window.ue.interface.broadcast("PSAPI", JSON.stringify(changeResolution));
 
     addPos.functionParameters[0].value = posAddData;
     setNormalPos.functionParameters[0].value = posStateData;
@@ -310,25 +350,43 @@ export default function IoTDevice({}: Props) {
         processPosData(data.data);
 
         // @ts-ignore 显示所有点位
-        window.ue && window.ue.interface.broadcast("PSAPI", JSON.stringify(setNormalPos));
+        window.ue &&
+          // @ts-ignore
+          window.ue.interface.broadcast("PSAPI", JSON.stringify(setNormalPos));
 
         // @ts-ignore 修改建筑物大小
-        window.ue && window.ue.interface.broadcast(
-          "PSAPI",
-          JSON.stringify(changeBuildingSize)
-        );
+        window.ue &&
+          // @ts-ignore
+          window.ue.interface.broadcast(
+            "PSAPI",
+            JSON.stringify(changeBuildingSize)
+          );
 
         // @ts-ignore 显示所有建筑物
-        window.ue && window.ue.interface.broadcast("PSAPI", JSON.stringify(setBuildingPos));
+        window.ue &&
+          // @ts-ignore
+          window.ue.interface.broadcast(
+            "PSAPI",
+            JSON.stringify(setBuildingPos)
+          );
 
         // @ts-ignore 设置建筑物可点击
-        window.ue && window.ue.interface.broadcast("PSAPI", JSON.stringify(setBuildClicked));
+        window.ue &&
+          // @ts-ignore
+          window.ue.interface.broadcast(
+            "PSAPI",
+            JSON.stringify(setBuildClicked)
+          );
 
         // @ts-ignore 设置点位大小
-        window.ue && window.ue.interface.broadcast("PSAPI", JSON.stringify(setPosSize));
+        window.ue &&
+          // @ts-ignore
+          window.ue.interface.broadcast("PSAPI", JSON.stringify(setPosSize));
 
         // @ts-ignore 设置显示距离
-        window.ue && window.ue.interface.broadcast("PSAPI", JSON.stringify(setDistance));
+        window.ue &&
+          // @ts-ignore
+          window.ue.interface.broadcast("PSAPI", JSON.stringify(setDistance));
       })
       .catch((err) => {
         console.log(err);
@@ -357,21 +415,24 @@ export default function IoTDevice({}: Props) {
 
             {/* list content */}
             <ul className="space-y-10">
-              {list.map((item) => {
+              {iotData.map((item, index) => {
                 return (
                   <li
                     className="flex justify-between items-center text-[24px] leading-[36px]"
-                    key={item.name}
+                    key={index}
+                    onClick={() => handleIotPosition(index, item.posInfo)}
                   >
                     <div className="text-[#E6E6E6] text-[28px] leading-[42px] flex flex-1">
-                      {item.icon}
-                      <span className="ml-2">{item.name}</span>
+                      {/* {item.icon}
+                      <span className="ml-2">{item.name}</span> */}
+
+                      <span className="ml-2">{item.iotType}</span>
                     </div>
                     <div className="text-[#8CF1EB] text-center flex-1">
-                      {item.normalValue}
+                      {item.normal}
                     </div>
                     <div className="text-[#FE5F7D] text-right flex-1">
-                      {item.abnormalValue}
+                      {item.abnormal}
                     </div>
                   </li>
                 );
