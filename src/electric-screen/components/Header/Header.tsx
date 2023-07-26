@@ -1,29 +1,31 @@
-import styled from 'styled-components';
-import NavDivider from './svg/NavDivider';
-import { useState } from 'react';
-import HeaderWidget from './HeaderWidget';
-import React from 'react';
+import styled from "styled-components";
+import NavDivider from "./svg/NavDivider";
+import { useState } from "react";
+import HeaderWidget from "./HeaderWidget";
+import React from "react";
 
 type Props = {};
 
 export default function Header({}: Props) {
+
   const [currentNav, setCurrentNav] = useState(2);
 
   const navList = [
-    '规划实施系统',
-    '智慧经济',
-    '公共空间',
-    '智慧楼宇',
-    '智战',
-    '智眼',
-    '运维',
+    "规划实施系统",
+    "智慧经济",
+    "公共空间",
+    "智慧楼宇",
+    "智战",
+    "智眼",
+    "运维",
   ];
+
 
   return (
     <Wrapper>
       <Title>
-        <div className='big'>杨浦滨江智慧公共空间</div>
-        <div className='small-box'>
+        <div className="big">杨浦滨江智慧公共空间</div>
+        <div className="small-box">
           <span>人民城市人民建</span>
           <span>人民城市为人民</span>
         </div>
@@ -34,7 +36,7 @@ export default function Header({}: Props) {
           return (
             <React.Fragment key={name}>
               {isFirst && (
-                <NavDivider fill={currentNav === 0 ? '#8CF1EB' : '#E6E6E6'} />
+                <NavDivider fill={currentNav === 0 ? "#8CF1EB" : "#E6E6E6"} />
               )}
               <NavText
                 onClick={() => setCurrentNav(index)}
@@ -45,8 +47,8 @@ export default function Header({}: Props) {
               <NavDivider
                 fill={
                   currentNav === index || currentNav === index + 1
-                    ? '#8CF1EB'
-                    : '#E6E6E6'
+                    ? "#8CF1EB"
+                    : "#E6E6E6"
                 }
               />
             </React.Fragment>
@@ -110,7 +112,7 @@ const NavText = styled.span<any>`
   margin-left: 40px;
   margin-right: 40px;
   cursor: pointer;
-  font-weight: ${(props) => (props.isCurrent ? '900' : '500')};
+  font-weight: ${(props) => (props.isCurrent ? "900" : "500")};
   color: ${(props) =>
-    props.isCurrent ? 'rgba(255, 255, 255, 1)' : 'rgba(230, 230, 230, 1)'};
+    props.isCurrent ? "rgba(255, 255, 255, 1)" : "rgba(230, 230, 230, 1)"};
 `;
