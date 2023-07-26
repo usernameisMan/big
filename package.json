@@ -55,21 +55,5 @@
   },
   "devDependencies": {
     "tailwindcss": "^3.3.3"
-  },
-  "proxy": {
-    "/api/open": {
-      "target": "http://zr.tocersoft.net:7888/api/open",
-      "changeOrigin": true,
-      "pathRewrite": {
-        "^/api/open": ""
-      },
-      "/api/weather": {
-        "target": "http://172.16.1.14:9045/api/weather",
-        "changeOrigin": true,
-        "pathRewrite": {
-          "^/api/weather": ""
-        }
-      }
-    }
   }
 }
