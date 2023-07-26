@@ -165,7 +165,7 @@ export default function MajorReceptionGuarantee({}: Props) {
               return (
                 <li
                   className={cn(
-                    'flex text-center font-medium text-[rgba(230,230,230,1)] items-center h-[84px] px-12',
+                    'flex text-center font-medium text-[rgba(230,230,230,1)] items-center h-[84px] px-12 hover:bg-gray-700',
                     {
                       'bg-[#0f2b3b]': isOdd,
                     },

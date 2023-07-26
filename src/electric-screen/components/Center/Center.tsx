@@ -14,6 +14,6 @@ export default function Center({}: Props) {
 const Wrapper = styled.div`
   position: absolute;
   width: 744px;
-  top: 2015px;
+  bottom: 72px;
   left: 2028px;
 `;

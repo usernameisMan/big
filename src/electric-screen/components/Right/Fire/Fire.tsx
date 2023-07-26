@@ -97,7 +97,15 @@ export default function Today({ }: Props) {
           {state}
         </div>
       </div>
-      <div className='result'>{result}</div>
+      {
+        result == '未处理'  && <div className='result untreated' >{result}</div>
+      }
+      {
+        result == '处理中'  && <div className='result treating' >{result}</div>
+      }
+      {
+        result == '已处理'  && <div className='result treated' >{result}</div>
+      }
     </div>)
      }
     </div>
@@ -109,6 +117,7 @@ const Wrapper = styled.div`
   width: 1000px;
   height: 648px;
   margin-top:40px;
+
   .tableBody {
     height: 508px;
     overflow: scroll;
@@ -137,12 +146,35 @@ const Wrapper = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
+      //styleName: 正文;
+      font-family: Source Han Sans CN;
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 36px;
+      letter-spacing: 0em;
+      text-align: left;
+    }
+
+    .untreated {
+      color: #ffffff;
+      background: #FE5F7D;
+      //styleName: 图表小标题;
+      font-family: Source Han Sans CN;
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 42px;
+      letter-spacing: 0em;
+      text-align: left;    
+    } 
+    .treating {
+      color: #8CF1EB;
+      border: 3px solid #8CF1EB
     }
     .bodyLeft {
       display: inline-flex;
       width: 696px;
       justify-content: space-between;
-      
+      align-items: center;
       .name {
         white-space: nowrap;
         width: 122px;
@@ -156,6 +188,9 @@ const Wrapper = styled.div`
     }
   }
 
+  .bodyLeft:active {
+    background-color: #455059;
+  }
   .tableHeader {
     z-index: 2;
     position: relative;
